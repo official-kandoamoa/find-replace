@@ -1,6 +1,8 @@
 # Find & Replace CLI
 
-A lightweight, **dependency-free** command-line find-and-replace tool for Python and Termux.
+**100% Python** · Dependency-free · Termux / Android compatible
+
+A lightweight, dependency-free command-line find-and-replace tool written entirely in Python.
 
 Search and replace text in a single file or across an entire directory with a safe workflow:
 
@@ -28,7 +30,7 @@ The tool supports literal searches, case-insensitive searches, and regular expre
 
 ## Requirements
 
-* Python 3
+* Python 3.9 or newer
 * No external Python packages are required.
 
 ## Installation
@@ -37,6 +39,13 @@ The tool supports literal searches, case-insensitive searches, and regular expre
 git clone https://github.com/official-kandoamoa/find-replace.git
 cd find-replace
 python find_replace.py
+```
+
+Or install it as a Python CLI package:
+
+```bash
+python -m pip install .
+find-replace
 ```
 
 ## Command-Line Usage
@@ -82,7 +91,7 @@ Input → Scan → Preview → Confirm → Backup → Replace → Verify → Sum
 
 ## Files That Are Skipped
 
-The tool skips common binary, generated, temporary, and dependency files and directories, including `.git`, `__pycache__`, `node_modules`, `.venv`, images, archives, databases, compiled files, editor backups, and `.DS_Store` files.
+The tool skips common binary, generated, temporary, and dependency files and directories, including `.git`, `__pycache__`, `node_modules`, `.venv`, images, archives, databases, and compiled files.
 
 Files containing a NUL byte in their first 8192 bytes are also treated as probably binary.
 
@@ -102,15 +111,13 @@ cd ~/storage/shared/Documents
 python find_replace.py
 ```
 
-## Cancellation and Error Handling
-
-Press `Ctrl+C` or `Ctrl+D` to cancel an interactive operation. Common errors such as missing files, permission problems, binary files, invalid regular expressions, backup failures, write failures, and verification failures are reported without raw tracebacks.
-
 ## Project Structure
 
 ```text
 find-replace/
-├── find_replace.py
+├── find_replace.py   # Python CLI application
+├── pyproject.toml    # Python project metadata
+├── .gitattributes    # Marks the project as Python for GitHub Linguist
 ├── README.md
 └── LICENSE
 ```
